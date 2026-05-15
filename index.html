@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Albin Joseph — Full Stack Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0d;
+    --surface: #181818;
+    --text: #ffffff ;
+    --muted: #888580;
+    --accent: #f0ede6;
+    --tag-bg: #222220;
+    --tag-text: #b8b5ae;
+    --border: rgba(240,237,230,0.09);
+    --link: #7aacda;
+  }
+
+  [data-theme="light"] {
+    --bg: #ffffff;
+    --surface: #f2f2f0;
+    --text: #0d0d0d;
+    --muted: #6b6960;
+    --accent: #0d0d0d;
+    --tag-bg: #e8e6e0;
+    --tag-text: #3d3c38;
+    --border: rgba(13,13,13,0.1);
+    --link: #2d5a8e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.5rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--text);
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  /* LAYOUT */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    padding: 5rem 0 2rem;
+  }
+
+  /* HERO */
+  #hero {
+    padding-top: 9rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: var(--surface);
+    border-color: var(--text);
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.85;
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  /* SECTION HEADINGS */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  .about-text p + p { margin-top: 1rem; }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .exp-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .exp-meta {
+    padding-top: 0.15rem;
+  }
+
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .exp-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-company {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    padding: 0;
+  }
+
+  .exp-bullets li {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* PROJECTS */
+  .project-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-card {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-start: start;
+  }
+
+  .project-card:last-child { border-bottom: 1px solid var(--border); }
+
+  .project-name {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    max-width: 540px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: all 0.2s;
+    align-self: start;
+  }
+
+  .project-link:hover {
+    color: var(--text);
+    border-color: var(--text);
+    background: var(--surface);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .skill-group {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .skill-group:nth-child(odd) { padding-right: 2rem; border-right: 1px solid var(--border); }
+  .skill-group:nth-child(even) { padding-left: 2rem; }
+  .skill-group:last-child, .skill-group:nth-last-child(2):nth-child(odd) { border-bottom: 1px solid var(--border); }
+
+  .skill-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-list {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  /* WRITING */
+  .writing-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .writing-link:last-child { border-bottom: 1px solid var(--border); }
+  .writing-link:hover { color: var(--link); }
+  .writing-link-text { font-size: 0.95rem; }
+  .writing-arrow {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  .contact-row {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+  }
+  .contact-row:last-child { border-bottom: 1px solid var(--border); }
+
+  .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    width: 80px;
+    text-transform: uppercase;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .contact-value:hover { color: var(--link); }
+
+  /* FOOTER */
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.25s;
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Small icon-only theme toggle shown in mobile nav */
+  .theme-icon-btn {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 1rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    line-height: 1;
+  }
+
+  .theme-icon-btn:hover { color: var(--text); border-color: var(--text); }
+
+  /* Right side of nav — wraps toggle + hamburger on mobile */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* MOBILE MENU OVERLAY */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    z-index: 150;
+    flex-direction: column;
+    padding: 1rem 1.25rem 3rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.1rem 0 2.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+
+  .mobile-close {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    line-height: 1;
+  }
+
+  .mobile-close:hover { color: var(--text); border-color: var(--text); }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+
+  .mobile-menu-links a {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-menu-links a:first-child { border-top: 1px solid var(--border); }
+  .mobile-menu-links a:hover { color: var(--muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .theme-toggle { display: none; }
+    .hamburger { display: flex; }
+    .theme-icon-btn { display: flex; }
+    main { padding: 0 1.25rem; }
+
+    #hero { padding-top: 7rem; }
+
+    .exp-item {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-group:nth-child(odd) { padding-right: 0; border-right: none; }
+    .skill-group:nth-child(even) { padding-left: 0; }
+
+    .project-card { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">albin.joseph</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <!-- Desktop: pill toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span id="themeIcon">☀</span>
+      <span id="themeLabel">Light</span>
+    </button>
+    <!-- Mobile: icon-only toggle -->
+    <button class="theme-icon-btn" id="themeIconBtn" aria-label="Toggle theme">
+      <span id="themeIconMini">☀</span>
+    </button>
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="#hero" class="nav-logo mobile-link">albin.joseph</a>
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mobile-menu-links">
+    <a href="#hero" class="mobile-link">Home</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#experience" class="mobile-link">Work</a>
+    <a href="#projects" class="mobile-link">Projects</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-label">Backend-Focused Full Stack Engineer</p>
+    <h1>Building systems<br>that <em>scale.</em></h1>
+    <p class="hero-desc">
+      3+ years building full stack products — with a deep focus on distributed backends, microservices, real-time engines, and event-driven architecture.
+      Based in Bengaluru, India.
+    </p>
+    <div class="hero-links">
+      <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+      <a href="https://github.com/albiejodev" target="_blank" class="btn">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/albin-joseph-a084b625b/" target="_blank" class="btn">LinkedIn ↗</a>
+      <a href="mailto:albiejosephs101@gmail.com" class="btn">Email</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">About</div>
+    <div class="about-text">
+      <p>
+        I'm a full stack engineer with a strong backend focus — specialising in Node.js, TypeScript, and distributed systems.
+        Over 3 years I've built and shipped production products across the entire stack, though my deepest work lives
+        in the backend: re-architecting monolithic platforms into microservices, designing real-time tracking engines,
+        and building event-driven workflows that hold up under load.
+      </p>
+      <p>
+        On the frontend I'm comfortable in React — I've built and delivered full features using Redux, Tailwind, and shadcn/ui,
+        and have stepped in as the frontend owner when needed in lean teams. I care about shipping complete, polished products,
+        not just APIs.
+      </p>
+      <p>
+        At Cloudesign, I independently owned backend development for CloudTrack — a multi-tenant logistics SaaS —
+        covering everything from trip management and real-time tracking to a live auction/bidding engine and billing workflows.
+        Outside of work, I build projects like RideFlow: a fully distributed ride-hailing backend modelled on real-world scale.
+      </p>
+      <p>
+        I write on backend engineering and system design on
+        <a href="https://medium.com/@albiejosephs101" target="_blank" style="color:var(--link); text-decoration:none;">Medium</a>.
+        Always up for conversations about architecture, system design, or interesting engineering problems.
+      </p>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Jul 2024<br>May 2026</div>
+      </div>
+      <div>
+        <div class="exp-title">Software Engineer — Backend</div>
+        <div class="exp-company">Cloudesign Technology Service · Bengaluru</div>
+        <ul class="exp-bullets">
+          <li>Re-architected a legacy monolithic logistics platform (CloudTrack) into a scalable, multi-tenant B2B SaaS product using NestJS, TypeScript, Redis, and MongoDB.</li>
+          <li>Built the core Trip Management system — creation, driver assignment, OTP-based pickup verification, and full status lifecycle transitions.</li>
+          <li>Implemented dual-mode real-time tracking via WebSocket (driver app) and SIM-based GPS (Twilio) for live truck location on the frontend.</li>
+          <li>Built a real-time auction/bidding engine with WebSockets; extended it to a WhatsApp-native workflow for non-web transporters.</li>
+          <li>Integrated Redis caching on high-frequency read paths, reducing API latency by 40–60% in production.</li>
+          <li>Built end-to-end billing, invoicing, and agreement/contract modules covering the full logistics lifecycle.</li>
+          <li>Mentored junior developers and delivered React components to unblock feature delivery in a lean team.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Jan 2023<br>Jun 2024</div>
+      </div>
+      <div>
+        <div class="exp-title">Freelance Software Developer</div>
+        <div class="exp-company">Remote</div>
+        <ul class="exp-bullets">
+          <li>Delivered Denim Store — a full-stack e-commerce platform with Razorpay payments and an admin dashboard for product, order, and coupon management.</li>
+          <li>Delivered Event Crest — a vendor booking platform with real-time chat (Socket.IO), Stripe payments, and live streaming via ZegoCloud.</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Projects</div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">
+            CloudTrack
+            <span style="font-family:'DM Mono',monospace;font-size:0.7rem;background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.55rem;border-radius:100px;font-weight:400;">Company Project</span>
+          </div>
+          <p class="project-desc">
+            Multi-tenant B2B logistics SaaS platform built at Cloudesign Technology Service. Re-architected from a legacy monolith into a scalable microservices backend. Owns the full logistics operational lifecycle — trip creation and management, OTP-based pickup verification, dual-mode real-time truck tracking (WebSocket + Twilio SIM GPS), a live auction/bidding engine for trip assignments, a WhatsApp-native bid workflow for non-web transporters, and end-to-end billing and agreement modules. Redis caching reduced API latency by 40–60% in production.
+          </p>
+          <div class="project-tags">
+            <span class="tag">NestJS</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">WebSockets</span>
+            <span class="tag">Redis</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Twilio</span>
+            <span class="tag">Microservices</span>
+            <span class="tag">React.js</span>
+          </div>
+        </div>
+        <span class="project-link" style="cursor:default;opacity:0.45;">Private</span>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">
+            RideFlow
+            <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);font-weight:400;">Microservices</span>
+          </div>
+          <p class="project-desc">
+            Production-grade distributed backend for a ride-hailing platform. 7 independent NestJS microservices — API Gateway, IAM, Driver, Geo, Matching, Trip, and Payment — each with its own database and event-driven inter-service communication via RabbitMQ. Features a driver matching engine with sequential/parallel offer modes, full trip lifecycle state machine, billing saga with Dead-Letter Queue fallback, MongoDB geospatial indexing, surge pricing, and replay-resistant request design.
+          </p>
+          <div class="project-tags">
+            <span class="tag">NestJS</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">RabbitMQ</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">JWT</span>
+          </div>
+        </div>
+        <a href="https://github.com/Rideflow-ride-sharing" target="_blank" class="project-link">GitHub ↗</a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">Event Crest</div>
+          <p class="project-desc">
+            Vendor booking platform connecting users with event organizers. Real-time chat via Socket.IO, Stripe payment integration, and live streaming capability via ZegoCloud. Built with React.js, TypeScript, and Node.js.
+          </p>
+          <div class="project-tags">
+            <span class="tag">React.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Socket.IO</span>
+            <span class="tag">Stripe</span>
+            <span class="tag">ZegoCloud</span>
+          </div>
+        </div>
+        <!-- <a href="https://github.com/albiejodev" target="_blank" class="project-link">GitHub ↗</a> -->
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">Denim Store</div>
+          <p class="project-desc">
+            Full-stack e-commerce platform for men's and women's denim fashion. Secure checkout via Razorpay, admin dashboard for product, order, and coupon management. Built with Node.js, Express.js, MongoDB, and EJS.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">EJS</span>
+            <span class="tag">Razorpay</span>
+          </div>
+        </div>
+        <!-- <a href="https://github.com/albiejodev" target="_blank" class="project-link">GitHub ↗</a> -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-category">Languages</div>
+        <div class="skill-list">TypeScript, JavaScript, HTML, CSS</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-category">Backend</div>
+        <div class="skill-list">Node.js, Express.js, NestJS, RESTful APIs, Microservices, Event-Driven Architecture, WebSockets</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-category">Databases</div>
+        <div class="skill-list">MongoDB (Geospatial), PostgreSQL, Redis</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-category">Infrastructure</div>
+        <div class="skill-list">Docker, Kubernetes, NGINX, AWS (S3, EC2), RabbitMQ</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-category">Frontend</div>
+        <div class="skill-list">React.js, Redux Toolkit, Tailwind CSS, shadcn/ui</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-category">Integrations</div>
+        <div class="skill-list">Stripe, Razorpay, Socket.IO, Google OAuth 2.0, WhatsApp Business API, AWS S3, Twilio</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="section-label">Writing</div>
+    <a href="https://medium.com/@albiejosephs101" target="_blank" class="writing-link">
+      <div>
+        <div class="writing-link-text" style="font-weight:500;">Medium — Backend Engineering & System Design</div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-top:0.2rem;">Articles on distributed systems, high-throughput APIs, and software architecture.</div>
+      </div>
+      <span class="writing-arrow">↗</span>
+    </a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-row">
+      <span class="contact-label">Email</span>
+      <a href="mailto:albiejosephs101@gmail.com" class="contact-value">albiejosephs101@gmail.com</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Phone</span>
+      <a href="tel:+919061609076" class="contact-value">+91 906 160 9076</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">GitHub</span>
+      <a href="https://github.com/albiejodev" target="_blank" class="contact-value">github.com/albiejodev ↗</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/albin-joseph-a084b625b/" target="_blank" class="contact-value">linkedin.com/in/albin-joseph ↗</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">LeetCode</span>
+      <a href="https://leetcode.com/" target="_blank" class="contact-value">leetcode.com/albinjoseph ↗</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Albin Joseph · Full Stack Engineer</p>
+  <p>Bengaluru, India · 2026</p>
+</footer>
+
+<script>
+  const html = document.documentElement;
+
+  // All theme toggle buttons
+  const toggleDesktop = document.getElementById('themeToggle');
+  const toggleMini = document.getElementById('themeIconBtn');
+  const iconDesktop = document.getElementById('themeIcon');
+  const labelDesktop = document.getElementById('themeLabel');
+  const iconMini = document.getElementById('themeIconMini');
+
+  let isLight = false;
+
+  function applyTheme(light) {
+    isLight = light;
+    const sunIcon = '☀';
+    const moonIcon = '◑';
+    if (light) {
+      html.setAttribute('data-theme', 'light');
+      iconDesktop.textContent = moonIcon; labelDesktop.textContent = 'Dark';
+      iconMini.textContent = moonIcon;
+    } else {
+      html.removeAttribute('data-theme');
+      iconDesktop.textContent = sunIcon; labelDesktop.textContent = 'Light';
+      iconMini.textContent = sunIcon;
+    }
+  }
+
+  toggleDesktop.addEventListener('click', () => applyTheme(!isLight));
+  toggleMini.addEventListener('click', () => applyTheme(!isLight));
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('open');
+    if (isOpen) { closeMenu(); }
+    else {
+      hamburger.classList.add('open');
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  document.getElementById('mobileClose').addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
