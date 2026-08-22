@@ -69,7 +69,7 @@
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.6rem;
     list-style: none;
   }
 
@@ -190,6 +190,28 @@
     opacity: 0.85;
     background: var(--text);
     color: var(--bg);
+  }
+
+  .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  .contact-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .contact-icon svg { width: 15px; height: 15px; }
+
+  .contact-row:hover .contact-icon {
+    color: var(--text);
+    border-color: var(--text);
   }
 
   /* SECTION HEADINGS */
@@ -592,6 +614,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Work</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#writing">Writing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -622,6 +646,8 @@
     <a href="#about" class="mobile-link">About</a>
     <a href="#experience" class="mobile-link">Work</a>
     <a href="#projects" class="mobile-link">Projects</a>
+    <a href="#skills" class="mobile-link">Skills</a>
+    <a href="#writing" class="mobile-link">Writing</a>
     <a href="#contact" class="mobile-link">Contact</a>
   </div>
 </div>
@@ -634,14 +660,27 @@
     <h1>Building systems<br>that <em>scale.</em></h1>
     <p class="hero-desc">
       3+ years building full stack products — with a deep focus on distributed backends, microservices, real-time engines,
-      event-driven architecture, and AI-powered systems including RAG pipelines and real-time voice agents.
+      event-driven architecture, and AI-powered systems including RAG pipelines, agent frameworks, and real-time voice agents.
       Based in Bengaluru, India.
     </p>
     <div class="hero-links">
       <a href="#projects" class="btn btn-primary">View Projects ↓</a>
-      <a href="https://github.com/albiejodev" target="_blank" class="btn">GitHub ↗</a>
-      <a href="https://www.linkedin.com/in/albin-joseph-a084b625b/" target="_blank" class="btn">LinkedIn ↗</a>
-      <a href="mailto:albiejosephs101@gmail.com" class="btn">Email</a>
+      <a href="Albin_CV_August_22.pdf" target="_blank" class="btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Resume
+      </a>
+      <a href="https://github.com/albiejodev" target="_blank" class="btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.5 0 12.3c0 5.44 3.44 10.05 8.21 11.68.6.11.82-.27.82-.6 0-.29-.01-1.24-.02-2.25-3.34.75-4.04-1.44-4.04-1.44-.55-1.43-1.33-1.81-1.33-1.81-1.09-.77.08-.76.08-.76 1.2.09 1.83 1.27 1.83 1.27 1.07 1.87 2.8 1.33 3.49 1.02.11-.79.42-1.33.76-1.64-2.67-.31-5.47-1.38-5.47-6.12 0-1.35.47-2.46 1.24-3.32-.12-.31-.54-1.57.12-3.27 0 0 1.01-.33 3.3 1.27a11.2 11.2 0 0 1 6 0c2.29-1.6 3.3-1.27 3.3-1.27.66 1.7.24 2.96.12 3.27.77.86 1.24 1.97 1.24 3.32 0 4.75-2.81 5.8-5.49 6.11.43.38.81 1.13.81 2.28 0 1.64-.02 2.97-.02 3.37 0 .33.22.72.83.6A12.32 12.32 0 0 0 24 12.3C24 5.5 18.63 0 12 0z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/albin-joseph-a084b625b/" target="_blank" class="btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:albiejosephs101@gmail.com" class="btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        Email
+      </a>
     </div>
   </section>
 
@@ -690,13 +729,16 @@
         <div class="exp-title">Software Engineer — Backend</div>
         <div class="exp-company">Cloudesign Technology Service · Bengaluru</div>
         <ul class="exp-bullets">
-          <li>Re-architected a legacy monolithic logistics platform (CloudTrack) into a scalable, multi-tenant B2B SaaS product using NestJS, TypeScript, Redis, and MongoDB.</li>
+          <li>Re-architected a legacy monolithic logistics platform (CloudTrack) into a scalable, multi-tenant B2B SaaS product using NestJS, TypeScript, Redis, and MongoDB — implementing tenant isolation, RBAC, and feature flags.</li>
+          <li>Designed and maintained production REST APIs with request validation, consistent error handling, API versioning, and JWT-based authorization.</li>
           <li>Built the core Trip Management system — creation, driver assignment, OTP-based pickup verification, and full status lifecycle transitions.</li>
           <li>Implemented dual-mode real-time tracking via WebSocket (driver app) and SIM-based GPS (Twilio) for live truck location on the frontend.</li>
-          <li>Built a real-time auction/bidding engine with WebSockets; extended it to a WhatsApp-native workflow for non-web transporters.</li>
-          <li>Integrated Redis caching on high-frequency read paths, reducing API latency by 40–60% in production.</li>
-          <li>Built end-to-end billing, invoicing, and agreement/contract modules covering the full logistics lifecycle.</li>
-          <li>Mentored junior developers and delivered React components to unblock feature delivery in a lean team.</li>
+          <li>Built a fault-tolerant real-time auction/bidding engine with WebSockets, async event processing, and retry/consistency controls to prevent race conditions under concurrent bids; extended it to a WhatsApp-native workflow for non-web transporters.</li>
+          <li>Optimized high-throughput APIs through MongoDB query/indexing tuning and Redis caching on high-frequency read paths, reducing API response times by 40–60% in production.</li>
+          <li>Built a high-volume Notification Service spanning Email, WhatsApp, SMS, and Push using asynchronous messaging, retry mechanisms, and event-driven workflows for reliable delivery.</li>
+          <li>Built end-to-end billing, invoicing, and agreement/contract modules with customer-specific pricing rules, contract validation, and financial workflow automation across tenants.</li>
+          <li>Delivered customer-facing features and real-time dashboards that improved operational visibility across logistics workflows.</li>
+          <li>Led code reviews, mentored junior engineers, conducted 45+ technical interviews, and established engineering best practices for the team.</li>
         </ul>
       </div>
     </div>
@@ -885,13 +927,40 @@
       <div class="project-card">
         <div>
           <div class="project-name">
+            AgentFlow AI
+            <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);font-weight:400;">LangGraph Agent Framework</span>
+          </div>
+          <p class="project-desc">
+            Production-style AI agent framework built with LangGraph, FastAPI, ChromaDB, and OpenAI/Gemini. Implements
+            session-based memory, tool calling, and conditional routing, with multi-step agent workflows designed
+            using StateGraph for dynamic tool selection and context-aware responses. Integrates vector search via
+            ChromaDB for semantic document retrieval and Retrieval-Augmented Generation (RAG) question answering.
+          </p>
+          <div class="project-tags">
+            <span class="tag">LangGraph</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">ChromaDB</span>
+            <span class="tag">RAG</span>
+            <span class="tag">OpenAI API</span>
+            <span class="tag">Gemini</span>
+            <span class="tag">StateGraph</span>
+            <span class="tag">Tool Calling</span>
+          </div>
+        </div>
+        <a href="https://github.com/albiejodev" target="_blank" class="project-link">GitHub ↗</a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">
             RideFlow Matching Engine
             <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);font-weight:400;">Distributed Systems</span>
           </div>
           <p class="project-desc">
             Distributed ride-matching subsystem designed around real-world ride-hailing workflows. Includes geospatial
             driver discovery, automatic search-radius expansion, sequential and parallel driver offers, live trip state
-            transitions, and idempotent request handling to prevent duplicate operations such as double charges.
+            transitions, and idempotent request handling to prevent duplicate operations such as double charges. Structured
+            logging and distributed request tracing across services simplify debugging and production issue diagnosis.
           </p>
           <div class="project-tags">
             <span class="tag">Geospatial Queries</span>
@@ -913,33 +982,59 @@
     <div class="skills-grid">
       <div class="skill-group">
         <div class="skill-category">Languages</div>
-        <div class="skill-list">TypeScript, JavaScript, HTML, CSS</div>
+        <div class="skill-list">TypeScript, JavaScript, Python, HTML, CSS</div>
       </div>
       <div class="skill-group">
         <div class="skill-category">Backend</div>
-        <div class="skill-list">Node.js, Express.js, NestJS, RESTful APIs, Microservices, Event-Driven Architecture, WebSockets</div>
+        <div class="skill-list">Node.js, Express.js, NestJS, RESTful APIs, WebSockets, RabbitMQ, JWT, Microservices, Event-Driven Architecture, Multi-Tenant SaaS, Caching</div>
       </div>
       <div class="skill-group">
         <div class="skill-category">Databases</div>
-        <div class="skill-list">MongoDB (Geospatial), PostgreSQL, Redis</div>
+        <div class="skill-list">MongoDB (Geospatial), PostgreSQL, Redis, ChromaDB</div>
       </div>
       <div class="skill-group">
-        <div class="skill-category">Infrastructure</div>
-        <div class="skill-list">Docker, Kubernetes, NGINX, AWS (S3, EC2), RabbitMQ</div>
+        <div class="skill-category">Cloud &amp; DevOps</div>
+        <div class="skill-list">AWS (EC2, S3, Lambda), Docker, Kubernetes, NGINX, GitHub Actions, CI/CD, Monitoring &amp; Observability</div>
       </div>
       <div class="skill-group">
         <div class="skill-category">Frontend</div>
-        <div class="skill-list">React.js, Redux Toolkit, Tailwind CSS, shadcn/ui</div>
+        <div class="skill-list">React.js, Next.js, Redux Toolkit, Tailwind CSS, shadcn/ui</div>
       </div>
       <div class="skill-group">
         <div class="skill-category">Integrations</div>
-        <div class="skill-list">Stripe, Razorpay, Socket.IO, Google OAuth 2.0, WhatsApp Business API, AWS S3, Twilio</div>
+        <div class="skill-list">Stripe, Razorpay, Socket.IO, Google OAuth 2.0, WhatsApp Business API, Twilio, ZegoCloud, Deepgram, ElevenLabs</div>
       </div>
       <div class="skill-group">
         <div class="skill-category">AI / LLM</div>
-        <div class="skill-list">Python, FastAPI, LangChain, LangGraph, RAG, Embeddings, Vector Databases, ChromaDB, Tool Calling, Agent Workflows</div>
+        <div class="skill-list">FastAPI, OpenAI API, LangChain, LangGraph, RAG, Embeddings, Vector Databases, Tool Calling, Agent Workflows</div>
       </div>
     </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label">Education</div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">2023<br>2024</div>
+      </div>
+      <div>
+        <div class="exp-title">MERN Stack Development</div>
+        <div class="exp-company">Brototype, Ernakulam</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">2017<br>2020</div>
+      </div>
+      <div>
+        <div class="exp-title">Bachelor of Computer Applications (BCA)</div>
+        <div class="exp-company">Mahatma Gandhi University</div>
+      </div>
+    </div>
+
   </section>
 
   <!-- WRITING -->
@@ -958,22 +1053,32 @@
   <section id="contact">
     <div class="section-label">Contact</div>
     <div class="contact-row">
+      <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
       <span class="contact-label">Email</span>
       <a href="mailto:albiejosephs101@gmail.com" class="contact-value">albiejosephs101@gmail.com</a>
     </div>
     <div class="contact-row">
+      <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
       <span class="contact-label">Phone</span>
       <a href="tel:+919061609076" class="contact-value">+91 906 160 9076</a>
     </div>
     <div class="contact-row">
+      <span class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.5 0 12.3c0 5.44 3.44 10.05 8.21 11.68.6.11.82-.27.82-.6 0-.29-.01-1.24-.02-2.25-3.34.75-4.04-1.44-4.04-1.44-.55-1.43-1.33-1.81-1.33-1.81-1.09-.77.08-.76.08-.76 1.2.09 1.83 1.27 1.83 1.27 1.07 1.87 2.8 1.33 3.49 1.02.11-.79.42-1.33.76-1.64-2.67-.31-5.47-1.38-5.47-6.12 0-1.35.47-2.46 1.24-3.32-.12-.31-.54-1.57.12-3.27 0 0 1.01-.33 3.3 1.27a11.2 11.2 0 0 1 6 0c2.29-1.6 3.3-1.27 3.3-1.27.66 1.7.24 2.96.12 3.27.77.86 1.24 1.97 1.24 3.32 0 4.75-2.81 5.8-5.49 6.11.43.38.81 1.13.81 2.28 0 1.64-.02 2.97-.02 3.37 0 .33.22.72.83.6A12.32 12.32 0 0 0 24 12.3C24 5.5 18.63 0 12 0z"/></svg></span>
       <span class="contact-label">GitHub</span>
       <a href="https://github.com/albiejodev" target="_blank" class="contact-value">github.com/albiejodev ↗</a>
     </div>
     <div class="contact-row">
+      <span class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></span>
       <span class="contact-label">LinkedIn</span>
       <a href="https://www.linkedin.com/in/albin-joseph-a084b625b/" target="_blank" class="contact-value">linkedin.com/in/albin-joseph ↗</a>
     </div>
     <div class="contact-row">
+      <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z" opacity="0"/><path d="m6 4 12 8-12 8V4z"/></svg></span>
+      <span class="contact-label">Medium</span>
+      <a href="https://medium.com/@albiejosephs101" target="_blank" class="contact-value">medium.com/@albiejosephs101 ↗</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 2 12h3v8h6v-5h2v5h6v-8h3z"/></svg></span>
       <span class="contact-label">LeetCode</span>
       <a href="https://leetcode.com/" target="_blank" class="contact-value">leetcode.com/albinjoseph ↗</a>
     </div>
