@@ -633,7 +633,8 @@
     <p class="hero-label">Backend-Focused Full Stack Engineer</p>
     <h1>Building systems<br>that <em>scale.</em></h1>
     <p class="hero-desc">
-      3+ years building full stack products — with a deep focus on distributed backends, microservices, real-time engines, and event-driven architecture.
+      3+ years building full stack products — with a deep focus on distributed backends, microservices, real-time engines,
+      event-driven architecture, and AI-powered systems including RAG pipelines and real-time voice agents.
       Based in Bengaluru, India.
     </p>
     <div class="hero-links">
@@ -665,9 +666,14 @@
         Outside of work, I build projects like RideFlow: a fully distributed ride-hailing backend modelled on real-world scale.
       </p>
       <p>
+        More recently, I've been building AI systems with Python, FastAPI, LangGraph, RAG, embeddings, vector databases,
+        and real-time streaming. My current AI work includes VoicePilot AI, an AI voice receptionist with a stateful
+        agent workflow and retrieval-backed company knowledge.
+      </p>
+      <p>
         I write on backend engineering and system design on
         <a href="https://medium.com/@albiejosephs101" target="_blank" style="color:var(--link); text-decoration:none;">Medium</a>.
-        Always up for conversations about architecture, system design, or interesting engineering problems.
+        Always up for conversations about architecture, system design, distributed systems, or practical AI engineering.
       </p>
     </div>
   </section>
@@ -799,6 +805,105 @@
         <!-- <a href="https://github.com/albiejodev" target="_blank" class="project-link">GitHub ↗</a> -->
       </div>
 
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">
+            VoicePilot AI
+            <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);font-weight:400;">AI Voice Receptionist</span>
+          </div>
+          <p class="project-desc">
+            Production-oriented AI voice receptionist backend for real-time phone conversations. Built a streaming
+            Speech-to-Text → LLM → Text-to-Speech pipeline with FastAPI, WebSockets, LangGraph, Redis, and Deepgram.
+            The agent uses a stateful graph with memory, routing, tool execution, and answer nodes, with ChromaDB-powered
+            retrieval for company-specific knowledge. Designed for low-latency conversational flows and extensibility
+            toward Twilio, ElevenLabs, PostgreSQL, and production observability.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">LangGraph</span>
+            <span class="tag">RAG</span>
+            <span class="tag">ChromaDB</span>
+            <span class="tag">Redis</span>
+            <span class="tag">WebSockets</span>
+            <span class="tag">Deepgram</span>
+            <span class="tag">LLM</span>
+          </div>
+        </div>
+        <a href="https://github.com/albiejodev/VoicePilot-AI_Backend" target="_blank" class="project-link">GitHub ↗</a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">
+            VoicePilot RAG Pipeline
+            <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);font-weight:400;">AI / Retrieval</span>
+          </div>
+          <p class="project-desc">
+            Retrieval-Augmented Generation layer for VoicePilot AI. Company knowledge is converted into embeddings,
+            stored in ChromaDB, retrieved through similarity search, and injected into the LLM prompt alongside
+            conversation history. Implemented the retrieval flow so the assistant can answer using relevant business
+            knowledge instead of relying only on model memory.
+          </p>
+          <div class="project-tags">
+            <span class="tag">RAG</span>
+            <span class="tag">Embeddings</span>
+            <span class="tag">Vector DB</span>
+            <span class="tag">ChromaDB</span>
+            <span class="tag">Gemini Embeddings</span>
+            <span class="tag">LangGraph</span>
+            <span class="tag">Prompt Engineering</span>
+          </div>
+        </div>
+        <a href="https://github.com/albiejodev/VoicePilot-AI_Backend" target="_blank" class="project-link">GitHub ↗</a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">
+            VoicePilot Agent Architecture
+            <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);font-weight:400;">LangGraph</span>
+          </div>
+          <p class="project-desc">
+            Stateful agent architecture built with LangGraph. The workflow separates memory, routing, tool execution,
+            and response generation into explicit graph nodes, making the system easier to extend with business tools,
+            retrieval, conversation memory, and external services while keeping the execution flow observable and testable.
+          </p>
+          <div class="project-tags">
+            <span class="tag">LangGraph</span>
+            <span class="tag">StateGraph</span>
+            <span class="tag">Agent State</span>
+            <span class="tag">Tool Calling</span>
+            <span class="tag">Memory</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <a href="https://github.com/albiejodev/VoicePilot-AI_Backend" target="_blank" class="project-link">GitHub ↗</a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">
+            RideFlow Matching Engine
+            <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);font-weight:400;">Distributed Systems</span>
+          </div>
+          <p class="project-desc">
+            Distributed ride-matching subsystem designed around real-world ride-hailing workflows. Includes geospatial
+            driver discovery, automatic search-radius expansion, sequential and parallel driver offers, live trip state
+            transitions, and idempotent request handling to prevent duplicate operations such as double charges.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Geospatial Queries</span>
+            <span class="tag">Redis</span>
+            <span class="tag">RabbitMQ</span>
+            <span class="tag">Microservices</span>
+            <span class="tag">Idempotency</span>
+            <span class="tag">State Machine</span>
+          </div>
+        </div>
+        <a href="https://github.com/Rideflow-ride-sharing" target="_blank" class="project-link">GitHub ↗</a>
+      </div>
     </div>
   </section>
 
@@ -829,6 +934,10 @@
       <div class="skill-group">
         <div class="skill-category">Integrations</div>
         <div class="skill-list">Stripe, Razorpay, Socket.IO, Google OAuth 2.0, WhatsApp Business API, AWS S3, Twilio</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-category">AI / LLM</div>
+        <div class="skill-list">Python, FastAPI, LangChain, LangGraph, RAG, Embeddings, Vector Databases, ChromaDB, Tool Calling, Agent Workflows</div>
       </div>
     </div>
   </section>
